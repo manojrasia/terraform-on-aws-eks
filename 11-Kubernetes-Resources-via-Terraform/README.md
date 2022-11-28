@@ -202,6 +202,11 @@ terraform plan
 
 # Terraform Apply
 terraform apply -auto-approve
+
+Run these cmd running before any kubectl cmds
+
+>$HOME/.kube/config ---> empth config file
+aws eks --region us-east-1 update-kubeconfig --name hr-stag-eksdemo1 
 ```
 
 ## Step-11: Verify Kubernetes Resources
