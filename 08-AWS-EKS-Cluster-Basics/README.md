@@ -418,7 +418,26 @@ aws eks --region <region-code> update-kubeconfig --name <cluster_name>
 aws eks --region us-east-1 update-kubeconfig --name hr-stag-eksdemo1
 To check where eks config info store
 
-cat $HOME/.kube/config
+cat $HOME/.kube/config first it is/was set
+
+apiVersion: v1
+clusters: null
+contexts: null
+current-context: ""
+kind: Config
+preferences: {}
+users: null
+
+due to which getting error   "'NoneType' object is not iterable" while running cmd "aws eks --region us-east-1 update-kubeconfig --name hr-stag-eksdemo1"
+
+For resolving this run below cmd(It will blank entire file)
+
+>  $HOME/.kube/config
+
+Then again run below cmd
+
+aws eks --region us-east-1 update-kubeconfig --name hr-stag-eksdemo1 and check cat $HOME/.kube/config
+
 
 # List Worker Nodes
 kubectl get nodes
