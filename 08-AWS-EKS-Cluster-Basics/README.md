@@ -428,7 +428,7 @@ kind: Config
 preferences: {}
 users: null
 
-due to which getting error   "'NoneType' object is not iterable" while running cmd "aws eks --region us-east-1 update-kubeconfig --name hr-stag-eksdemo1"
+due to which getting error   "'NoneType' object is not iterable" or "The connection to the server localhost:8080 was refused - did you specify the right host or port?" while running cmd "aws eks --region us-east-1 update-kubeconfig --name hr-stag-eksdemo1"
 
 For resolving this run below cmd(It will blank entire file)
 
