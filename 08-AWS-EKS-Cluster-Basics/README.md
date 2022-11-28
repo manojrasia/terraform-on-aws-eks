@@ -1,6 +1,6 @@
 ---
 title: EKS Cluster and Node Groups using Terraform
-description: Create AWS EKS Cluster and Node Groups using Terraform
+description: Create AWS EKS Cluster and Node Groups using Terraform and check for EKS config (Auth) error while issuing cmd
 ---
 
 ## Step-00: Introduction 
