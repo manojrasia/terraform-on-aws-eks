@@ -416,6 +416,9 @@ terraform output
 # Configure kubeconfig for kubectl
 aws eks --region <region-code> update-kubeconfig --name <cluster_name>
 aws eks --region us-east-1 update-kubeconfig --name hr-stag-eksdemo1
+To check where eks config info store
+
+cat $HOME/.kube/config
 
 # List Worker Nodes
 kubectl get nodes
