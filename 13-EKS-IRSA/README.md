@@ -19,7 +19,12 @@ description: Learn the concept EKS IRSA - IAM Roles for Service Accounts
 - **Folder:** `13-EKS-IRSA/01-ekscluster-terraform-manifests`
 - Verify Terraform State Storage S3 Bucket in `c1-versions.tf` and AWS Mgmt Console
 ```t
-  # Adding Backend as S3 for Remote State Storage
+  # Adding Backend as S3 for Remote State Storage #  in S3 bucker Access Objects can be public allow this permission otherwise will get error-- 
+  #data.terraform_remote_state.eks: Reading...
+#╷
+#│ Error: AccessDenied: Access Denied
+#│       status code: 403, request id: S35SZQY3QDPHWJBT, host id: ytnBUrNqd4dYZpcBIOpHyMHoBGyhzUIEJrGLLrBC6LF3pzFU56wOdsDcZnTqbRPEfnT6uXIrOMtu0pMkzrfQiA==
+
   backend "s3" {
     bucket = "terraform-on-aws-eks"
     key    = "dev/eks-cluster/terraform.tfstate"
@@ -230,6 +235,13 @@ terraform {
 }
 ```
 ## Step-13: c2-remote-state-datasource.tf
+
+#in S3 bucker Access Objects can be public allow this permission otherwise will get error-- 
+#data.terraform_remote_state.eks: Reading...
+#╷
+#│ Error: AccessDenied: Access Denied
+#│       status code: 403, request id: S35SZQY3QDPHWJBT, host id: ytnBUrNqd4dYZpcBIOpHyMHoBGyhzUIEJrGLLrBC6LF3pzFU56wOdsDcZnTqbRPEfnT6uXIrOMtu0pMkzrfQiA==
+
 - **Folder:** 02-eks-irsa-demo-terraform-manifests
 ```t
 # Terraform Remote State Datasource - Remote Backend AWS S3
