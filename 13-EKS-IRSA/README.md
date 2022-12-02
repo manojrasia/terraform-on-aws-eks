@@ -26,7 +26,7 @@ description: Learn the concept EKS IRSA - IAM Roles for Service Accounts
     region = "us-east-1" 
  
     # For State Locking
-    dynamodb_table = "dev-ekscluster"    
+    dynamodb_table = "dev-ekscluster"    #Partition key= LockID
   } 
 ```
 
@@ -42,7 +42,7 @@ description: Learn the concept EKS IRSA - IAM Roles for Service Accounts
     region = "us-east-1" 
  
     # For State Locking
-    dynamodb_table = "dev-ekscluster"    
+    dynamodb_table = "dev-ekscluster"    #Partition key= LockID
   } 
 ```
 
