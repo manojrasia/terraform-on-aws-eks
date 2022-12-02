@@ -55,6 +55,12 @@ description: Implement Terraform Remote State Storage with AWS S3 and DynamnoDB
 - Add the below listed Terraform backend block in `Terrafrom Settings` block in `c1-versions.tf`
 ```t
   # Adding Backend as S3 for Remote State Storage
+  #in S3 bucker Access Objects can be public allow this permission otherwise will get error-- 
+#data.terraform_remote_state.eks: Reading...
+#╷
+#│ Error: AccessDenied: Access Denied
+#│       status code: 403, request id: S35SZQY3QDPHWJBT, host id: ytnBUrNqd4dYZpcBIOpHyMHoBGyhzUIEJrGLLrBC6LF3pzFU56wOdsDcZnTqbRPEfnT6uXIrOMtu0pMkzrfQiA==
+
   backend "s3" {
     bucket = "terraform-on-aws-eks"
     key    = "dev/eks-cluster/terraform.tfstate"
@@ -142,6 +148,13 @@ Observation:
 - Update the EKS Cluster Remote State Datasource information
 ```t
 # Terraform Remote State Datasource - Remote Backend AWS S3
+
+#in S3 bucker Access Objects can be public allow this permission otherwise will get error-- 
+#data.terraform_remote_state.eks: Reading...
+#╷
+#│ Error: AccessDenied: Access Denied
+#│       status code: 403, request id: S35SZQY3QDPHWJBT, host id: ytnBUrNqd4dYZpcBIOpHyMHoBGyhzUIEJrGLLrBC6LF3pzFU56wOdsDcZnTqbRPEfnT6uXIrOMtu0pMkzrfQiA==
+
 data "terraform_remote_state" "eks" {
   backend = "s3"
   config = {
