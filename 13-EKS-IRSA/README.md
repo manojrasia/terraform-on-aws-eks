@@ -139,6 +139,8 @@ terraform apply -auto-approve
 ## Step-09: Configure Kubeconfig for kubectl
 ```t
 # Configure kubeconfig for kubectl
+
+$HOME/.kube/config ---> empth config file
 aws eks --region <region-code> update-kubeconfig --name <cluster_name>
 aws eks --region us-east-1 update-kubeconfig --name hr-dev-eksdemo1
 
