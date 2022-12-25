@@ -107,7 +107,7 @@ output "aws_iam_openid_connect_provider_arn" {
 - **Folder:** `13-EKS-IRSA/01-ekscluster-terraform-manifests`
 - **File Name:** c6-02-iam-oidc-connect-provider.tf
 ```t
-# Extract OIDC Provider from OIDC Provider ARN
+# Extract OIDC Provider from OIDC Provider ARN ( Element retrieves a single element from a list eg > element(["a", "b", "c"], 1) ans b
 locals {
     aws_iam_oidc_connect_provider_extract_from_arn = element(split("oidc-provider/", "${aws_iam_openid_connect_provider.oidc_provider.arn}"), 1)
 }
