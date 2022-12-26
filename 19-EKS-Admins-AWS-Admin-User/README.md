@@ -182,7 +182,37 @@ metadata:
   resourceVersion: "827"
   uid: 00614a82-89d1-4b11-a7e7-e02cb1ad2d02
 ```
-
+ ###aws-auth.yaml
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aws-auth
+  namespace: kube-system
+data:
+  mapRoles: |
+    - rolearn: rolearn: arn:aws:iam::007740003734:role/hr-dev-eks-nodegroup-role
+      username: system:node:{{EC2PrivateDNSName}}
+      groups:
+        - system:bootstrappers
+        - system:nodes
+  mapUsers: |
+    - userarn: arn:aws:iam::007740003734:user/eksadmin1
+      username:  eksadmin1
+      groups:
+        - system:masters
+    - userarn: arn:aws:iam::007740003734:user/eksadmin2
+      username: eksadmin2
+      groups:
+         - system:master
+  ``` 
+  delete existing aws-auth
+  
+  kubectl delete -n kube-system configmap aws-auth
+  
+  apply above aws-auth.yaml
+  
+  kubectl apply -f aws-auth.yaml
 ## Step-08: Configure Kubernetes configmap aws-auth with eksadmin1 user
 ```t
 # Get IAM User and make a note of arn
