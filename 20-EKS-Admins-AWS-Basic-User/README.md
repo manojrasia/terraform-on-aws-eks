@@ -148,7 +148,38 @@ metadata:
   namespace: kube-system
   resourceVersion: "16741"
   uid: e082bd27-b580-4e52-933b-63c56f06c99b
+  
+  aws-auth.yaml
 ```
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aws-auth
+  namespace: kube-system
+data:
+  mapRoles: |
+    - rolearn: rolearn: arn:aws:iam::007740003734:role/hr-dev-eks-nodegroup-role
+      username: system:node:{{EC2PrivateDNSName}}
+      groups:
+        - system:bootstrappers
+        - system:nodes
+  mapUsers: |
+    - userarn: arn:aws:iam::007740003734:user/eksadmin1
+      username:  eksadmin1
+      groups:
+        - system:masters
+    - userarn: arn:aws:iam::007740003734:user/eksadmin2
+      username: eksadmin2
+      groups:
+         - system:master
+  ``````  
+  delete existing aws-auth
+  
+  kubectl delete -n kube-system configmap aws-auth
+  
+  apply above aws-auth.yaml
+  
+  kubectl apply -f aws-auth.yaml
 
 ## Step-07: Configure eksadmin2 user AWS CLI Profile 
 ```t
