@@ -219,7 +219,7 @@ resource "aws_iam_policy" "ebs_csi_iam_policy" {
   name        = "${local.name}-AmazonEKS_EBS_CSI_Driver_Policy"
   path        = "/"
   description = "EBS CSI IAM Policy"
-  policy = data.http.ebs_csi_iam_policy.body or policy = jsonencode({
+  policy = data.http.ebs_csi_iam_policy.response_body or policy = jsonencode({
   "Version": "2012-10-17",
   "Statement": [
     {
