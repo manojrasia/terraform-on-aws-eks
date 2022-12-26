@@ -148,9 +148,9 @@ metadata:
   namespace: kube-system
   resourceVersion: "16741"
   uid: e082bd27-b580-4e52-933b-63c56f06c99b
-  
-  aws-auth.yaml
-```
+```  
+  ###aws-auth.yaml
+```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -172,7 +172,7 @@ data:
       username: eksadmin2
       groups:
          - system:master
-  ``````  
+  ``` 
   delete existing aws-auth
   
   kubectl delete -n kube-system configmap aws-auth
