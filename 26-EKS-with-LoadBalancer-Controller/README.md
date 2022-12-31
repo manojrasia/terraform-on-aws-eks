@@ -347,6 +347,8 @@ locals {
 
 ## Step-07: c4-01-lbc-datasources.tf
 ```t
+https://github.com/kubernetes-sigs/aws-load-balancer-controller/tree/main/docs/install
+
 # Datasource: AWS Load Balancer Controller IAM Policy get from aws-load-balancer-controller/ GIT Repo (latest)
 data "http" "lbc_iam_policy" {
   url = "https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/main/docs/install/iam_policy.json"
@@ -437,6 +439,11 @@ provider "helm" {
 ## Step-10: c4-04-lbc-install.tf
 ```t
 # Install AWS Load Balancer Controller using HELM
+
+https://github.com/aws/eks-charts/tree/gh-pages
+https://artifacthub.io/packages/helm/aws/aws-load-balancer-controller
+https://github.com/kubernetes-sigs/aws-load-balancer-controller/tree/main/helm/aws-load-balancer-controller
+https://github.com/kubernetes-sigs/aws-load-balancer-controller/blob/main/helm/aws-load-balancer-controller/values.yaml
 
 # Resource: Helm Release 
 resource "helm_release" "loadbalancer_controller" {
