@@ -358,7 +358,7 @@ data "http" "lbc_iam_policy" {
 }
 
 output "lbc_iam_policy" {
-  value = data.http.lbc_iam_policy.body
+  value = data.http.lbc_iam_policy.response_body
 }
 ```
 
@@ -370,7 +370,7 @@ resource "aws_iam_policy" "lbc_iam_policy" {
   name        = "${local.name}-AWSLoadBalancerControllerIAMPolicy"
   path        = "/"
   description = "AWS Load Balancer Controller IAM Policy"
-  policy = data.http.lbc_iam_policy.body
+  policy = data.http.lbc_iam_policy.response_body
 }
 
 output "lbc_iam_policy_arn" {
