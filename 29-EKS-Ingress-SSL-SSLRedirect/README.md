@@ -248,6 +248,9 @@ terraform plan
 
 # Terraform Apply
 terraform apply -auto-approve
+
+# To check issued status of certificate
+terraform apply -refresh-only -auto-approve
 ```
 
 ## Step-13: Verify Ingress Service
