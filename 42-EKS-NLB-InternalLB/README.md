@@ -198,9 +198,11 @@ curl <INTERNAL-NETWORK-LB-DNS>
 
 # Internal Network LB Curl Test
 curl lbc-network-lb-internal-demo-7031ade4ca457080.elb.us-east-1.amazonaws.com
+nslookup lbc-network-lb-internal-demo-7031ade4ca457080.elb.us-east-1.amazonaws.com
 Observation: 
 1. This should fail. 
 2. Network LB DNS resolves to 10.x.x.x subnet (VPC Subnet ) but we are inside EKS Cluster, inside a curl-pod, so lets use this Kubernetes Service Cluster-IP once.
+3. curl dns not working inside eks cluster but is should work inside same VPC whatever subnet of that vpc 10.x.x.x subnet (VPC Subnet )
 
 # Internal Network LB Curl Test
 curl <CLUSTER-IP-OF-lbc-network-lb-internal>
