@@ -30,6 +30,8 @@ module "vpc" {
   version = "2.78.0"
 
   # VPC Basic Details
+  Eks cluster created in public_subnet will have both public_subnets = ["10.0.101.0/24", "10.0.102.0/24"] configuration and subnet 10.0.101.0/24 will be     created in us-east-1a and subnet 10.0.102.0/24 will be created in us-east-1b
+  
   name = "vpc-dev"
   cidr = "10.0.0.0/16"   
   azs                 = ["us-east-1a", "us-east-1b"]
