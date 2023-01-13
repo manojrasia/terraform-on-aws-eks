@@ -157,6 +157,8 @@ resource "aws_eks_fargate_profile" "fargate_profile_apps" {
   subnet_ids = module.vpc.private_subnets
   selector {
     namespace = "fp-ns-app1"
+   #namespace = kubernetes_namespace_v1.fp_ns_app1.metadata[0].name  cross referencing namespace , it also manages the
+   #dependency first will create namespace after that fargate profile
   }
 }
 
