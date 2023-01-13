@@ -197,6 +197,8 @@ terraform plan
 
 # Terraform Apply
 terraform apply -auto-approve
+
+# if you get i/o timeout error simply run terraform apply -auto-approve again to resolve it
 ```
 
 ## Step-08: Configure kubeconfig and List Fargate Profiles 
