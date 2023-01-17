@@ -76,7 +76,7 @@ data "http" "efs_csi_iam_policy" {
 }
 
 output "efs_csi_iam_policy" {
-  value = data.http.efs_csi_iam_policy.body
+  value = data.http.efs_csi_iam_policy.response_body ##
 }
 ```
 
@@ -88,7 +88,45 @@ resource "aws_iam_policy" "efs_csi_iam_policy" {
   name        = "${local.name}-AmazonEKS_EFS_CSI_Driver_Policy"
   path        = "/"
   description = "EFS CSI IAM Policy"
-  policy = data.http.efs_csi_iam_policy.body
+  policy = data.http.efs_csi_iam_policy.body or  policy = jsonencode({ 
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "elasticfilesystem:DescribeAccessPoints",
+        "elasticfilesystem:DescribeFileSystems",
+        "elasticfilesystem:DescribeMountTargets",
+        "ec2:DescribeAvailabilityZones"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "elasticfilesystem:CreateAccessPoint"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringLike": {
+          "aws:RequestTag/efs.csi.aws.com/cluster": "true"
+        }
+      }
+    },
+    {
+      "Effect": "Allow",
+      "Action": "elasticfilesystem:DeleteAccessPoint",
+      "Resource": "*",
+      "Condition": {
+        "StringEquals": {
+          "aws:ResourceTag/efs.csi.aws.com/cluster": "true"
+        }
+      }
+    }
+  ]
+}
+  
+  
 }
 
 output "efs_csi_iam_policy_arn" {
