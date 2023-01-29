@@ -10,7 +10,7 @@ description: Learn to automate AWS EKS Kubernetes Cluster Autoscaler with Terraf
 - **Project Folder:** 01-ekscluster-terraform-manifests
 - c5-07-eks-node-group-public.tf
 - c5-08-eks-node-group-private.tf
-- **Important Note:** Node groups with Auto Scaling groups tags. The Cluster - Autoscaler requires the following tags on your Auto Scaling groups so that they can be auto-discovered.
+- **Important Note:** Node groups with Auto Scaling groups tags. The Cluster - Autoscaler requires the following tags on your Auto Scaling groups so that they can be auto-discovered. or he Cluster Autoscaler will require the label tag on the ASG should a deployment have a NodeSelector, else no scaling will occur as the Cluster Autoscaler does not realise the ASG has that particular label. 
 - Add Cluster Autoscaler tags in Node Groups
 ```t
   tags = {
